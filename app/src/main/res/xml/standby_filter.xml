@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skill name="standby">
+    <call path="/control/sleep">
+        <intent-filter category="speech">
+            <utterance sentence="待机"/>
+        </intent-filter>
+    </call>
+
+</skill>

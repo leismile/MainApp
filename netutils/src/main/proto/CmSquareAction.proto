@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+option java_outer_classname = "CmSquareActionProto";
+
+message DoSquareActionRequest {
+    string resourceName = 1;
+    int32 resourceType = 2;//1-系统内置,2-扩展资源,3-自定义资源
+}
+
+message StopSquareActionRequest {//停止
+}
+
+message SquareActionResponse {
+    bool success = 1;//
+    string errMsg = 2;//出错描述
+}

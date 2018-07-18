@@ -1,0 +1,21 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+option java_outer_classname = "QueryDownloadProgressProto";
+
+message QueryDownloadProgress {
+    DownloadState state = 1;//state = DOWNLOADING, COMPLETED 时, DownloadProgress 值有效
+    DownloadProgress progress = 2;
+    string errorMsg = 3;//state = ERROR, 出错原因
+}
+
+enum DownloadState {
+    DOWNLOADING = 0;
+    COMPLETED = 1;
+    ERROR = 2;
+}
+
+message DownloadProgress {
+    int64 downloadedBytes = 1;
+    int64 totalBytes = 2;
+    int32 speed = 3;//---单位: 字节/s
+}

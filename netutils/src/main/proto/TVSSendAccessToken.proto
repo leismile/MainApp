@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+
+message TVSSendAccessTokenRequest {
+    string accessToken = 1;
+    string freshToken = 2;
+    int64  expireTime = 3;
+    string clientId = 4;
+}
+
+message TVSSendAccessTokenResponse {
+    bool isSuccess = 1;
+    int32 resultCode = 2;
+
+
+}

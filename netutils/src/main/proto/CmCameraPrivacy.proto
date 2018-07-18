@@ -1,0 +1,14 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message CmCameraPrivacyRequest {
+    CameraPrivacyType type = 1;
+}
+
+message CmCameraPrivacyResponse {
+    CameraPrivacyType type = 1;
+}
+
+enum CameraPrivacyType{
+    OFF = 0;
+    ON = 1;
+}

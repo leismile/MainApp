@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+option java_outer_classname = "FirmwareUpgradeProto";
+
+message UpgradeResponse {
+    UpgradeState state = 1;
+}
+
+enum UpgradeState {
+    OK = 0;
+    LOW_POWER = 1;
+    NO_CHARGING = 2;
+    SKILL_FORBIDDEN = 3;
+    UNKNOWN = 4;
+}

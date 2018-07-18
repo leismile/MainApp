@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skill name="critical_upgrade_skill">
+  <call path="/ota/criticalUpgrade"></call>
+</skill>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- skill 白名单，触发这些skill时，不做状态的切换-->
+    <string-array name="skill_white_list">
+        <item>face_detect_skills</item>
+        <item>mainapp_speech_skill</item>
+        <item>face_tracking_skills</item>
+        <item>fallclimb</item>
+        <item>standby</item>
+        <item>shutdown</item>
+    </string-array>
+</resources>

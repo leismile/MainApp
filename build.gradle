@@ -1,0 +1,83 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "config.gradle"
+apply from: "appVersionConfig.gradle"
+apply plugin: 'kotlin'
+buildscript {
+    ext.kotlin_version =  '1.2.50'
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.2.5'
+        classpath 'com.android.tools.build:gradle:3.1.3'
+//        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.3'
+        classpath 'com.tencent.bugly:symtabfileuploader:2.1.2'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.7.5"
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//        classpath  'net.sf.proguard:proguard-gradle:5.+'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+ext {
+    snapshot =
+        !project.hasProperty("snapshot") || Boolean.parseBoolean(Project.property("snapshot"))
+}
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+        maven {
+            url "${artifactory_url}/${artifactory_rose_release}"
+            credentials {
+                username = artifactory_username
+                password = artifactory_password
+            }
+        }
+        maven {
+            url "${artifactory_url}/${artifactory_rose_snapshot}"
+            credentials {
+                username = artifactory_username
+                password = artifactory_password
+            }
+        }
+        maven {
+            url "${artifactory_url}/${artifactory_alpha_release}"
+            credentials {
+                username = artifactory_username
+                password = artifactory_password
+            }
+        }
+
+        maven {
+            url "${artifactory_url}/${artifactory_alpha_snapshot}"
+            credentials {
+                username = artifactory_username
+                password = artifactory_password
+            }
+        }
+    }
+
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 30, 'seconds'
+    }
+}
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.50"
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}

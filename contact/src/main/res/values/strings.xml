@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">contact</string>
+    <string name="phone_call">来自%s的电话，接听还是挂断</string>
+    <string name="phone_answer">已接听</string>
+    <string name="phone_miss_pre">您有</string>
+    <string name="phone_miss_suffix">未接听</string>
+    <string name="phone_call_wakeup">来自%s的电话，请唤醒后接听</string>
+    <string name="phone_not_found">好像没有找到%s的号码，请你再确认一下 </string>
+    <string name="endcall">通话结束</string>
+    <string name="call_tip">好的，现在呼叫%s</string>
+</resources>

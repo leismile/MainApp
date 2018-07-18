@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service name="sys_event">
+    <call path="/getCurrentBatteryInfo"/>
+    <call path="/sendSysActive"/>
+    <call path="/getSysActive"/>
+</service>

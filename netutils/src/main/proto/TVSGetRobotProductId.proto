@@ -1,0 +1,12 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message TVSGetRobotProductIdRequest {
+
+}
+
+message TVSGetRobotProductIdResponse {
+
+    string productId = 1;
+    string dsn = 2;
+
+}

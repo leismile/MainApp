@@ -1,0 +1,6 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+
+message GetMultiConvStateResponse {
+    bool state = 1;
+}

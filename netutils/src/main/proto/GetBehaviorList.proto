@@ -1,0 +1,10 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+
+message GetListRequest {
+    string path = 1;
+}
+
+message GetListResponse {
+     repeated string behaviorList = 1;
+}

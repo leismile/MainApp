@@ -1,0 +1,11 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+
+message ObserveVolumeKeyPressRequest {
+    bool isSubscribe = 1;
+}
+
+message ObserveVolumeKeyPressResponse {
+
+    int32 type = 1;
+}

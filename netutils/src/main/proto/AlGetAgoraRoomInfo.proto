@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message AlGetAgoraRoomInfoResponse {
+    string roomNumber = 1;
+    string channelKey = 2;
+    int32 resultCode = 3;
+    string errorMsg = 4;
+}
+

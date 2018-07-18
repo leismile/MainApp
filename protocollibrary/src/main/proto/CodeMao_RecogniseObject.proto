@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+
+message RecogniseObjectRequest {
+
+
+       int32 objectType = 1;
+       int32 timeout = 2;
+}
+
+message RecogniseObjectResponse {
+
+    repeated string objects = 1;
+    bool isSuccess = 2;
+    int32 resultCode = 3;
+
+}

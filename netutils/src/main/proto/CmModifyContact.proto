@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message CmModifyContactRequest {
+
+    int64 contactId = 1;
+    string name = 2;
+    string phone = 3;
+    string userId = 4;
+}
+
+message CmModifyContactResponse {
+
+    bool isSuccess = 1;
+    int32 resultCode = 2;
+
+}

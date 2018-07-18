@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+import "CodeMao_FaceInfo.proto";
+message ControlRegisterFaceRequest {
+
+    int32 userId = 1;
+    string userName = 2;
+    int32 type = 3;
+}
+
+message ControlRegisterFaceResponse {
+
+    bool isSuccess = 1;
+    int32 resultCode = 2;
+    string registerName = 3;
+
+}

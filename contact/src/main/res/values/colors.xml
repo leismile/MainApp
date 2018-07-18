@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_contacts_choose">#3F51B5</color>
+
+    <color name="color_contacts_yellow">#FAB80F</color>
+    <color name="color_contacts_blue">#0AAECF</color>
+    <color name="color_contacts_green">#83C708</color>
+    <color name="color_contacts_red">#F34D77</color>
+    <color name="color_contacts_purper">#CC64f1</color>
+    <color name="open_ble">#3FB4D5</color>
+    <color name="colorPrimary">#FFFFFF</color>
+
+
+</resources>

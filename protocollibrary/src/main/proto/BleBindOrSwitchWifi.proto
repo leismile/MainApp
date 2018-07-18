@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message BindOrSwitchWifiRequest {
+
+    string data = 1;
+
+}
+
+message BindOrSwitchWifiResponse {
+
+   string data = 1;
+
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+import "CodeMao_ActionInfo.proto";
+message GetActionListRequest {
+
+    string languageType = 1;
+    int32 actionType = 2;
+
+}
+
+message GetActionListResponse {
+
+     repeated ActionInfoResponse actionList = 1;
+
+}

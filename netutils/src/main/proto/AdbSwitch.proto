@@ -1,0 +1,10 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+
+message AdbSwitchRequest {
+    bool open = 1;
+}
+
+message AdbSwitchResponse {
+    bool isSuccess = 1;
+}

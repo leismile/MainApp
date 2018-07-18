@@ -1,0 +1,23 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+import "JimuErrorCode.proto";
+import "JimuCarListenType.proto";
+message GetJimuCarPowerRequest {
+    listenType listenType = 1;
+}
+
+message GetJimuCarPowerResponse {
+    CarPower carPower = 1;
+    JimuErrorCode errorCode = 2;
+    RobotPower robotPower = 3;
+}
+
+message CarPower {
+    bool isCharging = 1;
+    int32 powerNum = 2;
+    int32 powerPercentage = 3;
+}
+
+message RobotPower {
+    int32 powerPercentage = 1;
+}

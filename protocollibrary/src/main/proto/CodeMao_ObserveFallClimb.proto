@@ -1,0 +1,12 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+
+message ObserveFallClimbRequest {
+
+ bool isSubscribe = 1;
+}
+
+message ObserveFallClimbResponse {
+
+    int32 status = 1;
+}

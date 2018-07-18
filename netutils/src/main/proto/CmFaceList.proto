@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message CmFaceListRequest {
+    int32 page = 1;
+    int32 pageSize = 2;
+}
+
+message CMFaceInfo {
+   string id = 1;
+   string name = 2;
+   string avatar = 3;
+}
+
+message CmFaceListResponse {
+    repeated CMFaceInfo faceList = 1;
+}

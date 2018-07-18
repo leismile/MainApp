@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+import "JimuErrorCode.proto";
+message ChangeJimuCarLevelRequest {
+    JimuCarLevel level = 1;
+    string res = 2;
+}
+
+message ChangeJimuCarLevelResponse{
+    JimuErrorCode errorCode = 1;
+}
+
+enum JimuCarLevel {
+    NORMAL = 0;
+    POLICE = 1;
+}

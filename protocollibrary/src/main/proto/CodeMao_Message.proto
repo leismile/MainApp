@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+import "CodeMao_MessageHeader.proto";
+
+message Message {
+  MessageHeader header = 1;
+  bytes bodyData = 2;
+	
+}

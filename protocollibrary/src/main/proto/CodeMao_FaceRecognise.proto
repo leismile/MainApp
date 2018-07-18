@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+import "CodeMao_FaceInfo.proto";
+message FaceRecogniseRequest {
+
+    int32 timeout = 1;
+
+}
+
+message FaceRecogniseResponse {
+
+    repeated FaceInfoResponse faceInfos = 1;
+    bool isSuccess = 2;
+    int32 resultCode = 3;
+
+}

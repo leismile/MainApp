@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="error_low_power">悟空电量低,请充电后再来点击吧</string>
+  <string name="error_unsafe_action">悟空正在高难度动作,等他做完再试试吧</string>
+  <string name="error_last_action_no_finished">稍等一下,还没做完呢</string>
+  <string name="error_unknown">未知错误</string>
+  <string name="error_resource_no_exist">资源文件找不到了</string>
+  <string name="error_skill_enter_conflict">悟空正在做其他事情,请退出后再来点击吧</string>
+  <string name="error_resource_broken">动作资源解析异常</string>
+  <string name="error_skill_stopped_by_other">悟空有其他紧急的事情要处理</string>
+  <string name="error_param">参数异常</string>
+</resources>

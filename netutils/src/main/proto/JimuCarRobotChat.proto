@@ -1,0 +1,22 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+import "JimuErrorCode.proto";
+
+message JimuCarRobotChatRequest {
+    chatMode chatMode = 1;
+    string content = 2;
+}
+
+message JimuCarRobotChatResponse {
+    chatMode chatMode = 1;
+    JimuErrorCode errorCode = 2;
+}
+
+enum chatMode{
+    PRESET = 0;
+    CUSTOM = 1;
+}
+
+
+
+

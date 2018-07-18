@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skill name="mainapp_speech_skill">
+    <call
+        path="/volume/adjust">
+        <intent-filter category="speech">
+            <utterance sentence="调节音量" />
+        </intent-filter>
+    </call>
+    <call
+        path="/cameraprivacy/open">
+        <intent-filter category="speech">
+            <utterance sentence="打开摄像头隐私" />
+        </intent-filter>
+    </call>
+    <call
+        path="/cameraprivacy/close">
+        <intent-filter category="speech">
+            <utterance sentence="关闭摄像头隐私" />
+        </intent-filter>
+    </call>
+</skill>
+

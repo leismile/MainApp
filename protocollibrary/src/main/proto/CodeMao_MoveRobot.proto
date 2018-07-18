@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+message MoveRobotRequest {
+
+    int32 direction = 1;
+    int32 step = 2;
+}
+
+message MoveRobotResponse {
+
+    bool isSuccess = 1;
+    int32 code = 2;
+
+
+}

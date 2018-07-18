@@ -1,0 +1,27 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message GetRobotConfigurationRequest {
+
+
+
+}
+message GetRobotConfigurationResponse {
+
+    string wifiname = 1;
+    string totalspace = 2;
+    string availablespace = 3;
+    string mainappversion = 4;
+    string sysversion = 5;
+    string serail = 6;
+    string hardwareversion = 7;
+    bool isSimExist = 8;
+    bool isOpenData = 9;
+    bool isAdbEnable = 10;
+    string batterycapacity = 11;
+    string operator = 12;
+    string imei = 13;
+    string emid = 14;
+    string firstbindtime = 15;
+    string mac = 16;
+
+}

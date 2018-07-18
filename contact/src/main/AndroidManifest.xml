@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ubtechinc.contact">
+    // 通话权限
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
+    <permission
+        android:name="com.ubtechinc.contact.PROVIDER"
+        android:label="provider pomission"
+        android:protectionLevel="normal" />
+
+    <application>
+        <service android:name=".PhoneListenerService" />
+
+        <activity android:name=".ContactActivity"></activity>
+
+        <service android:name=".ConverseService"
+            android:exported="true">
+            <meta-data android:name="master.skill" android:resource="@xml/converse_call_filter"/>
+        </service>
+
+        <service android:name=".RingService"
+            android:exported="true">
+            <meta-data android:name="master.skill" android:resource="@xml/ring_call_filter"/>
+        </service>
+
+        <service android:name=".CallService"
+            android:exported="true">
+            <meta-data android:name="master.service" android:resource="@xml/call_filter" />
+        </service>
+        <provider
+            android:name=".ContactProvider"
+            android:authorities="com.provider.ubtechinc.contact"
+            android:permission="com.ubtechinc.contact.PROVIDER"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.provider.ubtechinc.AUTHORIZATION_PROVIDER" />
+            </intent-filter>
+        </provider>
+
+        <activity
+            android:name="com.ubtechinc.contact.TestContactActivity"
+            android:label="TestContact"
+            android:configChanges="orientation|keyboard|keyboardHidden|locale">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

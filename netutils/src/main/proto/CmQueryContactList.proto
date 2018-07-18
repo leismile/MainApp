@@ -1,0 +1,25 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message CmContactInfo {
+
+    int64 contactId = 1;
+    string name = 2;
+    string phone = 3;
+    int32 isDelete = 4;
+
+}
+
+message CmQueryContactListRequest {
+
+    int64 versionCode = 1;
+    int32 currentPage = 2;
+
+}
+
+message CmQueryContactListResponse {
+
+    int64 versionCode = 1;
+    int32 totalPage = 2;
+    repeated CmContactInfo contactList = 3;
+
+}

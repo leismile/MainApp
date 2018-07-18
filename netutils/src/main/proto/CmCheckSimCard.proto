@@ -1,0 +1,12 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message CmCheckSimCardRequest {
+
+}
+
+message CmCheckSimCardResponse {
+
+    bool isExist= 1;
+    string phoneNumber = 2;
+
+}

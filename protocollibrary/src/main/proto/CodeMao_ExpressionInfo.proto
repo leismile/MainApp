@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+message ExpressionInfoRequest {
+
+
+
+}
+
+message ExpressionInfoResponse {
+
+    int32 expressId = 1;
+    string expressName = 2;
+}

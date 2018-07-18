@@ -1,0 +1,23 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+import "JimuCarConnectBleCar.proto";
+import "JimuCarGetBleList.proto";
+import "JimuErrorCode.proto";
+import "JimuCarListenType.proto";
+message ChangeJimuDriveModeRequest {
+    DriveMode driveMode = 1;
+    listenType listenType = 2;
+}
+
+message ChangeJimuDriveModeResponse {
+    JimuErrorCode errorCode=1;
+    DriveMode driveMode = 2;
+    BleCarConnectState state = 3;
+    repeated JimuCarBle ble = 4;
+}
+
+enum DriveMode {
+    ENTER = 0;
+    QUIT = 1;
+}
+

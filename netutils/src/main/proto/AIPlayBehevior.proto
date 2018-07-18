@@ -1,0 +1,12 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message BehaviorRequest {
+    string behaviorName = 1;
+    string action = 2; //"play","stop"
+}
+
+message BehaviorResponse {
+
+    bool isSuccess = 1;
+    int32 resultCode = 2;
+}

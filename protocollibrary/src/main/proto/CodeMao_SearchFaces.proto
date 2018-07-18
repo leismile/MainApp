@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+message SearchFacesRequest {
+
+    bool isSearch = 1;
+}
+
+message SearchFacesResponse {
+
+    bool isSuccess = 1;
+    int32 resultCode = 2;
+
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message GetRobotWifiListRequest {
+
+    int32 status = 1;
+
+}
+message GetRobotWifiListResponse {
+
+    string wifilist = 1;
+
+}

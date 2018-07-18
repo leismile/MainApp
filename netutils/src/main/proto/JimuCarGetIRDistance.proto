@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+import "JimuCarListenType.proto";
+import "JimuErrorCode.proto";
+
+message JimuCarGetIRDistanceRequest {
+    listenType listenType = 1;
+}
+
+message JimuCarGetIRDistanceResponse {
+    int32 distance = 1;
+    JimuErrorCode errorCode=2;
+}

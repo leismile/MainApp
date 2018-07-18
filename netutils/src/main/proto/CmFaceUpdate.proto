@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message CmFaceUpdateRequest {
+    string id = 1;
+    string name = 2;
+    string avatar = 3;
+
+}
+
+message CmFaceUpdateResponse {
+
+    int32 resultCode = 1; // 0:成功， 1:失败
+
+}
+
+

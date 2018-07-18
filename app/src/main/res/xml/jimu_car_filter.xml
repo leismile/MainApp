@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skill name="jimucar">
+    <call path="/jimucar/enter_drive"/>
+    <call path="/jimucar/quit_drive"/>
+    <call path="/jimucar/scan_ble_list"/>
+    <call path="/jimucar/connect_car"/>
+    <call path="/jimucar/get_main_board_info"/>
+    <call path="/jimucar/check_car"/>
+    <call path="/jimucar/get_car_power"/>
+    <call path="/jimucar/get_ir_distance"/>
+    <call path="/jimucar/get_devices_id"/>
+    <call path="/jimucar/go_forward"/>
+    <call path="/jimucar/go_back"/>
+    <call path="/jimucar/turn_left"/>
+    <call path="/jimucar/turn_right"/>
+    <call path="/jimucar/stop_going"/>
+    <call path="/jimucar/reset_car_direction"/>
+    <call path="/jimucar/get_connect_state"></call>
+</skill>

@@ -1,0 +1,12 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+
+message ConnectRobotWifiRequest {
+    string ssid = 1;
+    string pwd = 2;
+    string cap = 3;
+}
+
+message ConnectRobotWifiResponse {
+    string code = 1;
+}

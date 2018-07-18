@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+
+message TakePictureRequest {
+
+   int32 type = 1;
+
+}
+
+message TakePictureResponse {
+
+    bool isSuccess = 1;
+    int32 code = 2;
+
+}

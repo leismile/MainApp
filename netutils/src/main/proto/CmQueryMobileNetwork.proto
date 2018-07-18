@@ -1,0 +1,12 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message CmQueryMobileNetworkRequest {
+
+}
+
+message CmQueryMobileNetworkResponse {
+
+    bool isOpenData = 1;
+    bool isOpenRoam = 2;
+
+}

@@ -1,0 +1,8 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+option java_outer_classname = "DownloadFirmwareProto";
+
+message DownloadFirmware {
+    int32 result = 1;//1: 启动成功 2: 启动下载失败
+    string errMsg = 2;// 3: 启动失败错误消息
+}

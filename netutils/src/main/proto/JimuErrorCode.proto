@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+
+enum JimuErrorCode{
+    REQUEST_PARAMS_ERROR=0;
+    INTERNAL_ERROR=1;
+    REQUEST_SUCCESS=2;
+    // car control
+    CMD_EXEC_SUCCESS = 3;
+    CMD_EXEC_FAILURE = 4;
+    //car state
+
+}

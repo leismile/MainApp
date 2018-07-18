@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+
+message ObserveHeadRacketRequest {
+
+  bool isSubscribe = 1;
+}
+
+message ObserveHeadRacketResponse {
+
+    int32 type = 1;
+
+}

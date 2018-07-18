@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+
+message ObserveInfraredDistanceRequest {
+
+  bool isSubscribe = 1;
+  int32 samplingPeriod = 2;
+}
+
+message ObserveInfraredDistanceResponse {
+
+    int32 distance = 1;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message CmModifyMobileRoamRequest {
+
+    bool isOpen = 1;
+
+}
+
+message CmModifyMobileRoamResponse {
+
+    bool isSuccess = 1;
+    int32 resultCode = 2;
+
+}

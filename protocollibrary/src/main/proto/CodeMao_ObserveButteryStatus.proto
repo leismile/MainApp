@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+
+message ObserveButteryStatusRequest {
+
+    bool isSubscribe = 1;
+}
+
+message ObserveButteryStatusResponse {
+
+    int32 level = 1;
+    int32 status = 2;
+}

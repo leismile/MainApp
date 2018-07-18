@@ -1,0 +1,32 @@
+syntax = "proto3";
+option java_package = "com.ubtrobot.led.protos" ;
+
+// 联系人信息
+message Contact {
+    string name = 1;
+    string phoneNumber = 2;
+}
+
+// 拨打电话请求
+message CallRequest {
+    repeated Contact contactList = 1;
+}
+
+enum ResponseType
+{
+    SUCCESS = 0;
+    CONTACTNOTFOUND = 1;
+    MULTINUMBERFOUND = 2;
+}
+
+// 拨打电话响应
+message CallResponse
+{
+    ResponseType responseType = 1;
+    repeated Contact contactList = 2;
+}
+
+
+
+
+

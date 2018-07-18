@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+import "JimuErrorCode.proto";
+import "JimuCarListenType.proto";
+message GetJimuCarBleListRequest{
+    listenType listenType = 1;
+}
+
+message GetJimuCarBleListResponse {
+     repeated JimuCarBle ble = 1;
+     JimuErrorCode errorCode=2;
+}
+
+message JimuCarBle{
+    string name = 1;
+    string mac = 2;
+}

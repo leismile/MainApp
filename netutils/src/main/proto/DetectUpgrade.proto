@@ -1,0 +1,24 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+option java_outer_classname = "DetectUpgradeProto";
+
+message DetectUpgrade {
+    DetectState state = 1;
+    repeated FirmwareInfo firmwareInfo = 2; // 固件信息
+    string errMsg = 3; // 如果检测失败，该字段是错误信息
+}
+
+message FirmwareInfo {
+    string group = 1;
+    string name = 2;//取值:android,firmware
+    string version = 3;//
+    int64 releaseTime = 4;
+    string releaseNote = 5;
+}
+
+enum DetectState {
+    NO_UPDATE = 0;// 没有新版本
+    HAS_UPDATE = 1; // 有新版本
+    HAS_DOWNLOADED = 2; // 新版本已下载
+    IS_DOWNLOADING = 3;//正在下载
+}

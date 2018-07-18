@@ -1,0 +1,25 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+import "JimuErrorCode.proto";
+
+message JimuCarControlRequest {
+    Control cmd = 1;
+}
+
+message JimuCarControlResponse {
+    Control cmd = 1;
+    JimuErrorCode errorCode = 2;
+}
+
+enum Control {
+    CAR_FORWARD = 0;
+    CAR_BACK = 1;
+    CAR_LEFT = 2;
+    CAR_RIGHT = 3;
+    CAR_STOP = 4;
+    CAR_RESET_DIRECTION = 5;
+    CAR_BELL_HORN = 6;
+    CAR_FLASHING_LIGHT = 7;
+}
+
+

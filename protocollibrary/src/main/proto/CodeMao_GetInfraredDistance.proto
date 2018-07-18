@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+
+message GetInfraredDistanceRequest {
+
+
+}
+
+message GetInfraredDistanceResponse {
+
+    int32 distance = 1;
+
+}

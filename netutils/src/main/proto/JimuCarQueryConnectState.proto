@@ -1,0 +1,19 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+import "JimuCarListenType.proto";
+import "JimuErrorCode.proto";
+import "JimuCarConnectBleCar.proto";
+import "JimuCarGetBleList.proto";
+
+message JimuCarQueryConnectStateRequest {
+    listenType listenType = 2;
+}
+
+message JimuCarQueryConnectStateResponse {
+    JimuErrorCode errorCode = 1;
+    JimuCarBle car = 2;
+    BleCarConnectState state = 3;
+}
+
+
+

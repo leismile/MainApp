@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+import "CmQueryContactList.proto";
+
+message CmImportPhoneContactRequest {
+    repeated CmContactInfo contactList = 1;
+    string userId = 2;
+}
+
+message CmImportPhoneContactResponse {
+
+    bool isSuccess = 1;
+    int32 resultCode = 2;
+
+}

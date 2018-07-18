@@ -1,0 +1,11 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+
+message GetIpRequest {
+    string path = 1;
+}
+
+message GetIpResponse {
+     string wifissid = 1;
+     string ip = 2;
+}

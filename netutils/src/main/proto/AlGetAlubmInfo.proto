@@ -1,0 +1,13 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+option java_package = "com.ubtechinc.alpha";
+message AlGetAlubmInfoRequest {
+    string path = 1;
+    string host = 2;
+    google.protobuf.Any bodyData = 3;
+
+}
+message AlGetAlubmInfoResponse {
+
+    google.protobuf.Any bodyData = 1;
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skill name="shutdown">
+    <call path="/control/prowoff">
+        <intent-filter category="speech">
+            <utterance sentence="关机"/>
+        </intent-filter>
+    </call>
+</skill>

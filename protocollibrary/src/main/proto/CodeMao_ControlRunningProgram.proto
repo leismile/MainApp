@@ -1,0 +1,14 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+message ControlRunningProgramRequest {
+
+    bool isStart = 1;
+
+}
+
+message ControlRunningProgramResponse {
+
+    bool isSuccess = 1;
+    int32 resultCode = 2;
+
+}

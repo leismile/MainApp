@@ -1,0 +1,14 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message CmDeleteContactRequest {
+
+    int64 contactId = 1;
+    string userId = 2;
+}
+
+message CmDeleteContactResponse {
+
+    bool isSuccess = 1;
+    int32 resultCode = 2;
+
+}

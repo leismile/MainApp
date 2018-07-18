@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+
+message GetRobotSidRequest {
+
+
+}
+
+message GetRobotSidResponse {
+
+    string robotSid = 1;
+
+}

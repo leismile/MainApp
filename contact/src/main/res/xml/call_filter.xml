@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service name="phonecall">
+
+    <call path="/call"/>
+    <call path="/answer"/>
+    <call path="/hangup"/>
+    <call path="/playring"/>
+
+</service>

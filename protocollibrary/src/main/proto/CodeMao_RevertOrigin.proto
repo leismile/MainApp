@@ -1,0 +1,11 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+message RevertOriginRequest {
+}
+
+message RevertOriginResponse {
+
+    bool isSuccess = 1;
+    int32 resultCode = 2;
+
+}

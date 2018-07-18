@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skill name="common_upgrade_skill">
+  <call path="/ota/commonUpgrade">
+    <intent-filter category="speech">
+      <utterance sentence="升级"/>
+    </intent-filter>
+  </call>
+</skill>
+

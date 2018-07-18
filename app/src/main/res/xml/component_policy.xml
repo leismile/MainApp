@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component-policy>
+    <!-- FIXME skill 起来时，关掉人脸追踪的skill -->
+    <package name="com.ubtrobot.master.policy">
+        <!--电话响铃skill处理-->
+        <skill name="phone_ring">
+            <will-start> <!-- 来电话时，哪些skill需要关闭 -->
+                <blacklist>
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="fruit_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="codemaoagent"
+                        package="com.ubtechinc.codemao" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+            <did-start>
+                <blacklist> <!-- 电话skill开启了 -->
+                    <skill
+                        name="common_upgrade_skill"
+                        package="com.ubtrobot.master.policy" />
+                    <skill
+                        name="critical_upgrade_skill"
+                        package="com.ubtrobot.master.policy" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="speech_highrisk_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="standby"
+                        package="com.ubtrobot.master.policy" />
+                    <skill
+                        name="codemaoagent"
+                        package="com.ubtechinc.codemao" />
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </did-start>
+        </skill>
+        <!--通话中skill处理-->
+        <skill name="phone_call">
+            <will-start> <!-- 拨打电话时，哪些skill需要关闭 -->
+                <blacklist>
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="fruit_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="codemaoagent"
+                        package="com.ubtechinc.codemao" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="avatar"
+                        package="com.ubt.mini.videolive" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+            <did-start>
+                <blacklist>
+                    <skill
+                        name="common_upgrade_skill"
+                        package="com.ubtrobot.master.policy" />
+                    <skill
+                        name="critical_upgrade_skill"
+                        package="com.ubtrobot.master.policy" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="speech_highrisk_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="standby"
+                        package="com.ubtrobot.master.policy" />
+                    <skill
+                        name="codemaoagent"
+                        package="com.ubtechinc.codemao" />
+                    <skill
+                        name="avatar"
+                        package="com.ubt.mini.videolive" />
+                </blacklist>
+            </did-start>
+        </skill>
+        <!--普通升级skill处理-->
+        <skill name="common_upgrade_skill">
+            <will-start> <!--普通升级skill开启时，所有skill都要停止运行-->
+                <blacklist>
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="codemaoagent"
+                        package="com.ubtechinc.codemao" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+            <did-start><!--普通升级运行，所有skill都不能开启-->
+                <whitelist>
+                    <skill
+                        name="shutdown"
+                        package="com.ubtrobot.master.policy" />
+                </whitelist>
+            </did-start>
+        </skill>
+        <!--紧急升级skill处理-->
+        <skill name="critical_upgrade_skill">
+            <will-start> <!--紧急升级skill开启时，这些skill都要停止运行-->
+                <blacklist>
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="codemaoagent"
+                        package="com.ubtechinc.codemao" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+            <did-start><!--紧急升级运行，所有skill都不能开启-->
+                <whitelist>
+                    <skill
+                        name="shutdown"
+                        package="com.ubtrobot.master.policy" />
+                </whitelist>
+            </did-start>
+        </skill>
+        <!--关机-->
+        <skill name="shutdown"> <!-- 关机待机的skill -->
+            <will-start>
+                <whitelist>
+                    <skill
+                        name="fallclimb"
+                        package="com.ubtechinc.fallclimb" />
+                </whitelist>
+            </will-start>
+            <did-start>
+                <whitelist>
+                    <skill
+                        name="fallclimb"
+                        package="com.ubtechinc.fallclimb" />
+                </whitelist>
+            </did-start>
+        </skill>
+        <!--待机-->
+        <skill name="standby"> <!-- 关机待机的skill -->
+            <will-start>
+                <whitelist>
+                    <skill
+                        name="fallclimb"
+                        package="com.ubtechinc.fallclimb" />
+                </whitelist>
+            </will-start>
+            <did-start>
+                <whitelist>
+                    <skill
+                        name="fallclimb"
+                        package="com.ubtechinc.fallclimb" />
+                </whitelist>
+            </did-start>
+        </skill>
+
+        <skill name="customer">
+            <!-- todo 配置customer skill开启时，哪些skill会有冲突 -->
+        </skill>
+
+        <service name="sys_event">
+            <will-add-state state_name="lowPower">
+                <blacklist>
+                    <skill
+                        name="avatar"
+                        package="com.ubt.mini.videolive" />
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="fruit_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="speech_tts_action"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="codemaoagent"
+                        package="com.ubtechinc.codemao" />
+                    <skill
+                        name="customer"
+                        package="com.ubtrobot.master.policy" />
+                </blacklist>
+
+            </will-add-state> <!-- 低电状态 -->
+            <did-add-state state_name="lowPower">
+                <blacklist>
+                    <skill
+                        name="avatar"
+                        package="com.ubt.mini.videolive" />
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="fruit_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="speech_highrisk_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="speech_tts_action"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="codemaoagent"
+                        package="com.ubtechinc.codemao" />
+                    <skill
+                        name="customer"
+                        package="com.ubtrobot.master.policy" />
+                </blacklist>
+            </did-add-state>
+        </service>
+    </package>
+
+    <package name="com.ubt.mini.videolive">
+        <!-- 视频监控skill-->
+        <skill name="avatar">
+            <will-start> <!-- 视频通话skill开启时，哪些已经开启的skill需要关闭-->
+                <blacklist>
+                    <skill
+                        name="face_tracking_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="fruit_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="codemaoagent"
+                        package="com.ubtechinc.codemao" />
+                    <skill
+                        name="customer"
+                        package="com.ubtrobot.master.policy"/>
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+            <did-start> <!--视频通话skill已经开启，哪些skill不能开启-->
+                <blacklist>
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="face_tracking_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="fruit_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="speech_highrisk_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="common_upgrade_skill"
+                        package="com.ubtrobot.master.policy" />
+                    <skill
+                        name="critical_upgrade_skill"
+                        package="com.ubtrobot.master.policy" />
+                    <skill
+                        name="codemaoagent"
+                        package="com.ubtechinc.codemao" />
+                    <skill
+                        name="customer"
+                        package="com.ubtrobot.master.policy"/>
+                    <skill
+                        name="common_upgrade_skill"
+                        package="com.ubtrobot.master.policy" />
+                    <skill
+                        name="critical_upgrade_skill"
+                        package="com.ubtrobot.master.policy" />
+                </blacklist>
+            </did-start>
+        </skill>
+    </package>
+
+    <package name="com.ubtechinc.alphamini.speech">
+        <!--闹钟skill-->
+        <skill name="alert_skill"> <!-- 闹钟skill开启时，哪些已经开启的skill需要关闭-->
+            <will-start>
+                <blacklist>
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+            <did-start>
+                <blacklist>
+                    <skill
+                        name="common_upgrade_skill"
+                        package="com.ubtrobot.master.policy" />
+                    <skill
+                        name="critical_upgrade_skill"
+                        package="com.ubtrobot.master.policy" />
+                </blacklist>
+            </did-start>
+        </skill>
+        <!-- 流媒体-->
+        <skill name="music_skill">
+            <will-start>
+                <blacklist>
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+        </skill>
+        <!--闲聊skill-->
+        <skill name="chat_skill">
+            <will-start>
+                <blacklist>
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+        </skill>
+
+        <skill name="audio_record_skill">
+            <will-start>
+                <blacklist>
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="fruit_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="speech_highrisk_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                </blacklist>
+            </will-start>
+            <did-start>
+                <blacklist>
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </did-start>
+        </skill>
+    </package>
+
+    <package name="com.ubt.alphamini.facedetector">
+        <!-- 人脸录入 -->
+        <skill name="face_register_skill">
+            <will-start><!-- 人脸录入skill开启时，哪些已经开启的skill需要关闭-->
+                <blacklist>
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+        </skill>
+
+        <!--人脸识别-->
+        <skill name="speech_face_skills">
+            <will-start> <!-- 人脸识别skill开启时，哪些已经开启的skill需要关闭-->
+                <blacklist>
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+        </skill>
+
+        <!--绘本阅读-->
+        <skill name="book_skills">
+            <will-start>
+                <blacklist>
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+            <did-start>
+                <blacklist>
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                </blacklist>
+            </did-start>
+        </skill>
+
+        <!--物体识别-->
+        <skill name="object_skills">
+            <will-start>
+                <blacklist>
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+        </skill>
+
+        <!--拍照-->
+        <skill name="take_picture">
+            <will-start>
+                <blacklist>
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+        </skill>
+    </package>
+
+    <package name="com.ubtechinc.mini.speechactor">
+        <!--普通动作skill-->
+        <skill name="speech_actor">
+            <will-start>
+                <blacklist>
+                    <skill
+                        name="fruit_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+            <did-start>
+                <blacklist>
+                    <skill
+                        name="fruit_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </did-start>
+        </skill>
+        <!--高危动作skill-->
+        <skill name="speech_highrisk_actor">
+            <will-start>
+                <blacklist>
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+            <did-start>
+                <blacklist>
+                    <skill
+                        name="fruit_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="avatar"
+                        package="com.ubt.mini.videolive" />
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="codemaoagent"
+                        package="com.ubtechinc.codemao" />
+
+                    <skill
+                        name="customer"
+                        package="com.ubtrobot.master.policy"/>
+                </blacklist>
+            </did-start>
+        </skill>
+
+        <!--普通动作skill-->
+        <skill name="action_square_actor">
+            <will-start>
+                <blacklist>
+                    <skill
+                        name="fruit_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="alert_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+            <did-start>
+                <blacklist>
+                    <skill
+                        name="fruit_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </did-start>
+        </skill>
+    </package>
+
+    <package name="com.ubtechinc.fallclimb">
+        <service name="fallclimb">
+            <will-add-state state_name="fallclimb">
+                <blacklist>
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="speech_highrisk_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-add-state>
+            <did-add-state state_name="fallclimb">
+                <blacklist>
+                    <skill
+                        name="avatar"
+                        package="com.ubt.mini.videolive" />
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="codemaoagent"
+                        package="com.ubtechinc.codemao" />
+
+                    <skill
+                        name="customer"
+                        package="com.ubtrobot.master.policy"/>
+                </blacklist>
+            </did-add-state>
+        </service>
+    </package>
+
+    <package name="com.ubtechinc.codemao">
+        <skill name="codemao_running">
+            <will-start> <!-- 编程猫skill开启的时候，哪些已经开启的skill需要关闭-->
+                <blacklist>
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="face_tracking_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="sauron_api_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="audio_record_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </will-start>
+            <did-start> <!--编程猫skill已经开启，哪些skill不能开启-->
+                <blacklist>
+                    <skill
+                        name="face_register_skill"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="face_tracking_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_face_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="object_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="take_picture"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="book_skills"
+                        package="com.ubt.alphamini.facedetector" />
+                    <skill
+                        name="speech_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="action_square_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="speech_highrisk_actor"
+                        package="com.ubtechinc.mini.speechactor" />
+                    <skill
+                        name="music_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                    <skill
+                        name="chat_skill"
+                        package="com.ubtechinc.alphamini.speech" />
+                </blacklist>
+            </did-start>
+        </skill>
+
+    </package>
+
+</component-policy>

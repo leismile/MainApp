@@ -1,0 +1,104 @@
+apply plugin: 'com.google.protobuf'
+apply plugin: 'com.android.library'
+protobuf {
+    protoc {
+        // Download from repositories
+        artifact = rootProject.ext.plugin.protocArtifact
+    }
+    plugins {
+        javalite {
+            // The codegen for lite comes as a separate artifact
+            artifact = rootProject.ext.plugin.javaliteArtifact
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.plugins {
+                javalite {}
+            }
+        }
+    }
+}
+
+def getProps(String env) {
+    def Properties props = new Properties()
+    def proFile = file('filters/' + env + '/config.properties')
+    if (proFile.canRead()) {
+        props.load(new FileInputStream(proFile))
+    }
+    props
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (rootProject.ext.app.serverEnviroment.equalsIgnoreCase("debug")) {
+                buildConfigField 'String', 'HOST', "\"http://210.75.21.109:8080/alpha2-web/\""
+                buildConfigField 'String', 'IM_HOST', "\"http://202.170.139.171:9080/\""
+                buildConfigField 'String', 'CHANNEL_ID', "\"A2\""
+
+            } else {
+                buildConfigField 'String', 'HOST', "\"https://apis.ubtrobot.com/v1/alphamini/\""
+                buildConfigField 'String', 'IM_HOST', "\"https://apis.ubtrobot.com/\""
+                buildConfigField 'String', 'CHANNEL_ID', "\"ALPHAMINI\""
+            }
+
+        }
+        debug {
+            if (rootProject.ext.app.serverEnviroment.equalsIgnoreCase("debug")) {
+                buildConfigField 'String', 'HOST', "\"http://210.75.21.109:8080/alpha2-web/\""
+                buildConfigField 'String', 'IM_HOST', "\"http://202.170.139.171:9080/\""
+                buildConfigField 'String', 'CHANNEL_ID', "\"A2\""
+
+            } else {
+                buildConfigField 'String', 'HOST', "\"https://apis.ubtrobot.com/v1/alphamini/\""
+                buildConfigField 'String', 'IM_HOST', "\"https://apis.ubtrobot.com/\""
+                buildConfigField 'String', 'CHANNEL_ID', "\"ALPHAMINI\""
+            }
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        ignoreWarnings true
+    }
+
+    useLibrary 'org.apache.http.legacy'
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    compileOnly rootProject.ext.deps.timber
+    //测试
+    testImplementation rootProject.ext.deps.junit
+    testImplementation rootProject.ext.deps.truth
+    testImplementation rootProject.ext.deps.robolectric
+    //网络
+    implementation rootProject.ext.deps.retrofit2
+    implementation rootProject.ext.deps.retrofit_gson
+    implementation rootProject.ext.deps.rx_retrofit
+    implementation rootProject.ext.deps.rxAndroid
+    implementation rootProject.ext.deps.okhttp
+    implementation rootProject.ext.deps.logging_interceptor
+
+    implementation rootProject.ext.deps.protobufLava
+    compileOnly rootProject.ext.deps.supportAnnotations
+    implementation rootProject.ext.deps.eventbus
+    implementation deps.utillib
+    implementation (deps.motionsdk) {
+        exclude group: 'com.ubtrobot.lib.packets', module: 'services-common'
+    }
+}

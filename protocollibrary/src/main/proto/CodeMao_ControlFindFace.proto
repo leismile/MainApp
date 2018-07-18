@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+message ControlFindFaceRequest {
+
+    int32 type = 1;
+    int32 timeout = 2;
+}
+
+message ControlFindFaceResponse {
+
+    bool isSuccess = 1;
+    int32 code = 2;
+    int32 status = 3;
+    int32 faceCount = 4;
+
+}

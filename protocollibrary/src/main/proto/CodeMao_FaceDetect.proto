@@ -1,0 +1,14 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+
+message FaceDetectRequest {
+     int32 timeout = 1;
+}
+
+message FaceDetectResponse {
+
+    int32 count = 1;
+    bool isSuccess = 2;
+    int32 resultCode = 3;
+
+}

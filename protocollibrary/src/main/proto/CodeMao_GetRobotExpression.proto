@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+import "CodeMao_ExpressionInfo.proto";
+message GetRobotExpressionRequest {
+
+
+}
+
+message GetRobotExpressionResponse {
+
+    repeated ExpressionInfoResponse expressList = 1;
+
+}

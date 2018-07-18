@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+message SetMouthLampRequest {
+
+    int32 model = 1;
+    int32 color = 2;
+    int32 duration = 3;
+    int32 breathDuration = 4;
+}
+
+message SetMouthLampResponse {
+
+    bool isSuccess = 1;
+    int32 resultCode = 2;
+
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.codemao";
+message ControlBehaviorRequest {
+
+    string name = 1;
+    int32 eventType = 2;
+}
+
+message ControlBehaviorResponse {
+
+    bool isSuccess = 2;
+    int32 resultCode = 3;
+
+}

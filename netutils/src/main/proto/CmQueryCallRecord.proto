@@ -1,0 +1,26 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+message CmCallRecordInfo {
+
+    int64 callId = 1;
+    string callerName = 2;
+    int32 type = 3;
+    int64 duration = 4;
+    int64 callTime = 5;
+
+}
+
+message CmQueryCallRecordRequest {
+
+    int64 versionCode = 1;
+    int32 currentPage = 2;
+
+}
+
+message CmQueryCallRecordResponse {
+
+    int64 versionCode = 1;
+    int32 totalPage = 2;
+    repeated CmCallRecordInfo contactList = 3;
+
+}

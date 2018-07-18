@@ -1,0 +1,277 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.protobuf'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+def bakPath = file("${buildDir}/bakFile/")
+def bakFiles = ["mapping.txt", "resources.txt", "seeds.txt", "usage.txt"]
+def deps = rootProject.ext.deps
+
+//获取产品的名字
+def getProductName() {
+    return "mainApp_" + rootProject.ext.mainapp.versionName + "${getJenkinsBuild()}"
+}
+
+//获取当前系统的时间
+def releaseTime() {
+    return new Date().format("MMdd")
+}
+
+boolean isInJeknins() {
+
+    Map<String, String> map = System.getenv()
+    if (map == null) {
+        return false
+    }
+    String str
+    Iterator it = map.iterator()
+    while (it.hasNext()) {
+        str = it.next()
+        if (str.contains("jenkins")) {
+            return true
+        }
+    }
+    return false
+}
+//获取jenkins build number
+def getJenkinsBuild() {
+    boolean flag = isInJeknins()
+    if (flag) {
+        ext.env = System.getenv()
+        ext.buildNumber = env.get("BUILD_NUMBER")
+        return "#" + "$buildNumber"
+    } else {
+        return ""
+    }
+}
+
+def getProductProps(String product) {
+    def Properties props = new Properties()
+    def proFile = file('products/' + product + '/config.properties')
+    if (proFile.canRead()) {
+        props.load(new FileInputStream(proFile))
+    }
+    props
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        applicationId "com.ubtrobot.master.policy"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.app.versionCode
+        versionName rootProject.ext.app.versionName
+        multiDexEnabled true
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+//        jackOptions {
+//            enabled true
+//        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    // snapshot 依赖库的刷新频率
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 1, 'minutes'
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("ubt.keystore")
+            storePassword "android"
+            keyAlias "platform"
+            keyPassword "android"
+        }
+        debug {
+            storeFile file("ubt.keystore")
+            storePassword "android"
+            keyAlias "platform"
+            keyPassword "android"
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+//            def oldFile = output.outputFile
+//            output.outputFile = new File(oldFile.parent, "MainApp_${variant.name}_${variant.versionName}_${releaseTime()}.apk")
+            outputFileName = "MainApp_${variant.name}_${variant.versionName}_${releaseTime()}.apk"
+
+        }
+        def customVersionName = variant.mergedFlavor.versionName
+        boolean flag = isInJeknins()
+        if (flag) {
+            variant.mergedFlavor.versionName = customVersionName + "${getJenkinsBuild()}"
+        } else {
+            def currentBranchName = 'git rev-parse --abbrev-ref HEAD'.execute().text.trim()
+            variant.mergedFlavor.versionName = customVersionName + "_${artifactory_username}" + "_${currentBranchName}" + "_${releaseTime()}"
+        }
+    }
+
+
+
+  android.applicationVariants.all { variant ->
+    def taskName = variant.name
+    tasks.all {
+      if ("assemble${taskName}".equalsIgnoreCase(it.name)) {
+        it.doLast {
+          copy {
+            def fileName = getProductName() + "_${releaseTime()}"
+            if (variant.productFlavors != null && variant.productFlavors[0] != null) {
+              fileName += "_" + variant.productFlavors[0].name
+            }
+
+            if (variant.buildType != null) {
+              fileName += "_" + variant.buildType.name
+            }
+            def destPath = bakPath
+            def apkName = fileName + ".apk"
+            def sourceApk = variant.outputs[0].outputFile
+            def sourceApkName = sourceApk.getName()
+            from sourceApk
+            into destPath
+
+            //备份 apk
+            include(sourceApkName)
+            rename(sourceApkName, apkName)
+
+            //备份混淆文件
+            from "${buildDir}/outputs/mapping/${variant.dirName}/"
+            into destPath
+            for (bakFileName in bakFiles) {
+              include(bakFileName)
+              rename(bakFileName, fileName + "_" + bakFileName)
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+    buildTypes {
+        release {
+            manifestPlaceholders = ["CATEGORY": "android.intent.category.LAUNCHER"]
+            minifyEnabled true
+            shrinkResources true
+            if (!isInJeknins()) {
+                signingConfig signingConfigs.release
+            }
+            buildConfigField "Boolean", "SDResourceEnable",
+                    rootProject.ext.app.useSdcardResource ? "true" : "false"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "Boolean", "SDResourceEnable",
+                    rootProject.ext.app.useSdcardResource ? "true" : "false"
+        }
+
+        debug {
+            manifestPlaceholders = ["CATEGORY": "android.intent.category.LAUNCHER"]
+            minifyEnabled false
+            shrinkResources false
+            buildConfigField "Boolean", "SDResourceEnable",
+                    rootProject.ext.app.useSdcardResource ? "true" : "false"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "Boolean", "SDResourceEnable",
+                    rootProject.ext.app.useSdcardResource ? "true" : "false"
+            signingConfig signingConfigs.release
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        ignoreWarnings true
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+
+dependencies {
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation rootProject.ext.deps.supportAnnotations
+    implementation(group: 'com.ubtrobot.lib.packets', name: 'sauronsdk', version: '0.1.6-SNAPSHOT')
+    implementation project(':netutils')
+    implementation project(':download')
+    implementation project(':bleControler')
+    implementation deps.motionsdk
+    implementation deps.speechsdk
+    implementation deps.utillib
+    implementation deps.protobufparam
+    implementation deps.gson
+    implementation deps.qiniuandroid
+    implementation deps.qiniujava
+
+
+    implementation deps.behivarcfg
+    implementation deps.timber
+
+
+    implementation deps.eventbus
+    implementation deps.ulog
+    implementation deps.action
+    implementation deps.ubxlib
+    implementation deps.mouthledapi
+    implementation deps.ubtdatabase
+    implementation (deps.scenelib) {
+
+        exclude group: 'xmlpull', module: 'xmlpull'
+        exclude group: 'xpp3', module: 'xpp3_min'
+    }
+    implementation deps.emotionlib
+    implementation deps.expresssdk
+
+    implementation deps.syseventsdk
+    implementation deps.policy
+    implementation deps.properties_sdk
+
+//    implementation project(':express-sdk')
+//    implementation project(':syseventsdk')
+    implementation deps.standupsdk
+    implementation deps.voicesdk
+    implementation rootProject.ext.deps.timber
+    implementation 'cn.zhaiyifan:init:1.0.1'
+    implementation('com.yanzhenjie:permission:1.1.0', {
+        exclude group: 'com.yanzhenjie.alertdialog', module: 'alertdialog'
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    })
+    //    implementation rootProject.ext.deps.bugly
+    //    implementation rootProject.ext.deps.buglynative
+    implementation project(':lancommunicationhelper')
+    implementation(project(':contact')) {
+        exclude group: 'com.android.databinding'
+    }
+
+    //测试
+    testImplementation rootProject.ext.deps.junit
+    testImplementation rootProject.ext.deps.mockito
+    testImplementation(rootProject.ext.deps.robolectric) {
+        exclude group: 'commons-logging', module: 'commons-logging'
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    }
+        compile files('libs/netty-all-4.1.25.Final.jar')
+
+    implementation(group: 'com.ubtrobot.framework', name: 'upgrade', version: '0.4.0-SNAPSHOT')
+    implementation files('libs/BaiduLBS_Android.jar')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation project(path: ':bluetoothLibrary')
+
+}

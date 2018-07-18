@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.ubtechinc.alpha";
+import "JimuCarListenType.proto";
+import "JimuErrorCode.proto";
+
+message checkCarRequest {
+    listenType listenType = 1;
+}
+
+message checkCarResponse {
+    repeated int32 errorModelIds = 1;
+    JimuErrorCode errorCode = 2;
+}
+
+
+

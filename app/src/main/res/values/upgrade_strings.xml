@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="detected_acquire_wifi">发现重大升级包,请为我连接WIFI开始下载</string>
+  <string name="no_upgrade_packages">当前已经是最新版本,不需要升级</string>
+  <string name="downloading_packages">正在下载升级包,请稍候</string>
+  <string name="downloading_packages2">正在下载升级包,下载完成将自动升级</string>
+  <string name="detected_start_download">发现重大升级包,正在下载中,请为我连接电源保证电量充足</string>
+  <string name="upgrade_connect_power">升级包下载完成,请为我链接电源开始升级</string>
+  <string name="upgrade_not_disconnect_power">开始升级，升级过程可能需要5到10分钟，请耐心等候，升级过程中请不要拔掉电源</string>
+  <string name="prepare_acquire_user_wait">我正在准备升级，请耐心等候，升级后的我会更厉害哦</string>
+  <string name="upgrading_and_acquire_user_wait">我正在升级，请耐心等候，升级后的我会更厉害哦</string>
+  <string name="detected_acquire_say_upgrade">发现系统新版本，如需升级请唤醒我,再说，‘升级’</string>
+  <string name="upgrade_acquire_connect_power">请帮我连接电源，保证升级过程中我处于充电状态</string>
+  <string name="upgrade_acquire_power_50">电量较低,当电量大于百分之五十时,将自动开始升级</string>
+  <string name="upgrade_cancel_tips">升级取消，如需升级请到app的固件升级处手动升级</string>
+  <string name="upgrade_cancel_tips_">升级取消</string>
+  <string name="upgrade_success_and_happy">升级成功，我又变得更聪明了呢！</string>
+  <string name="err_has_upgraded">已经在升级了</string>
+  <string name="err_android_check_failure">升级文件校验失败, 请稍后再试</string>
+  <string name="err_firmware_check_failure">升级文件校验失败, 请稍后再试</string>
+</resources>
